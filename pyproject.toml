@@ -1,0 +1,40 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pramana-rag"
+version = "0.1.0"
+description = "A grounding-first RAG library: threshold-gated retrieval, concern-based chunking, a locked grounding prompt, and built-in faithfulness evaluation as the default path, not an optional rail."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [{ name = "zUdyog / RAG Essentials" }]
+keywords = ["rag", "retrieval-augmented-generation", "grounding", "hallucination", "embeddings", "vector-search"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = ["numpy>=1.24"]
+
+[project.optional-dependencies]
+openai = ["openai>=1.0"]
+chroma = ["chromadb>=0.4"]
+eval = ["ragas>=0.1", "datasets>=2.0"]
+mlflow = ["mlflow>=2.0"]
+dev = ["pytest>=7.0"]
+all = ["pramana-rag[openai,chroma,eval,mlflow,dev]"]
+
+[project.urls]
+Homepage = "https://github.com/zudyog/pramana-rag"
+Documentation = "https://www.zudyog.com/docs/pramana-rag/overview"
+Issues = "https://github.com/zudyog/pramana-rag/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pramana"]
